@@ -18,3 +18,9 @@
 .person-details .list-group-item .term{
     margin-right: 8px;
 }
+
+@media (min-width: 768px) {
+    .person-details {
+        margin-top: 0;
+    }
+}
