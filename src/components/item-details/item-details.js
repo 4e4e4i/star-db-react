@@ -10,7 +10,7 @@ export default class PersonDetails extends Component {
     swapiService = new SwapiService();
 
     state = {
-        person: null,
+        item: null,
         loading: true
     };
 
@@ -19,7 +19,7 @@ export default class PersonDetails extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.personId !== prevProps.personId) {
+        if (this.props.itemId !== prevProps.itemId) {
             this.setState({
                 loading: true
             });
@@ -27,37 +27,37 @@ export default class PersonDetails extends Component {
         }
     }
 
-    onPersonLoaded = (person) => {
+    onPersonLoaded = (item) => {
         this.setState({
-            person,
+            item,
             loading: false
         })
     };
 
     updatePerson = () => {
-        const { personId } = this.props;
-        if (!personId) {
+        const { itemId } = this.props;
+        if (!itemId) {
             return;
         }
 
         this.swapiService
-            .getPerson(personId)
+            .getPerson(itemId)
             .then(this.onPersonLoaded);
     };
 
     render() {
 
-        const { person, loading } = this.state;
+        const { item, loading } = this.state;
 
 
-        // if (!this.state.person) {
-        //     return <span>Select a person from a list</span>
-        // }
+        if (!item) {
+            return <span>Select a person from a list</span>
+        }
 
         const hasData = !loading;
 
         const spinner = loading ? <Spinner /> : null;
-        const content = hasData ? <PersonView person={person}/> : null;
+        const content = hasData ? <PersonView item={item}/> : null;
 
 
         return (
@@ -69,9 +69,9 @@ export default class PersonDetails extends Component {
     }
 }
 
-const PersonView = ({ person }) => {
+const PersonView = ({ item }) => {
 
-    const { id, name, gender, birthYear, eyeColor } = person;
+    const { id, name, gender, birthYear, eyeColor } = item;
 
     return (
         <React.Fragment>
