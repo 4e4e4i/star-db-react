@@ -5,15 +5,14 @@ import Header from '../header';
 import RandomPlanet from '../random-planet';
 import PeoplePage from '../people-page';
 import ErrorIndicator from "../error-indicator";
-import ItemList from "../item-list";
 import ItemDetails, { Record } from "../item-details/item-details";
+import {PersonList, StarshipList, PlanetList, PersonDetails, PlanetDetails, StarshipDetails } from "../sw-components";
 
 // Services
 import SwapiService from "../../services/swapi-service";
 
 // Styles
 import './app.css'
-import Row from "../row";
 
 export default class App extends Component {
 
@@ -46,36 +45,6 @@ export default class App extends Component {
 
         const planet = this.state.showRandomPlanet ? <RandomPlanet/> : null;
 
-        const { getPerson,
-                getStarship,
-                getPersonImage,
-                getStarshipImage } = this.swapiService;
-
-        const personDetails = (
-            <ItemDetails
-                getData={getPerson}
-                getImageUrl={getPersonImage}
-                itemId={11}>
-
-                <Record field="gender" label="Gender" />
-                <Record field="eyeColor" label="Eye Color" />
-
-            </ItemDetails>
-        );
-
-        const starshipDetails = (
-            <ItemDetails
-                getData={getStarship}
-                getImageUrl={getStarshipImage}
-                itemId={5}>
-
-                <Record field="model" label="Model" />
-                <Record field="length" label="Length" />
-                <Record field="costInCredits" label="Cost" />
-
-            </ItemDetails>
-        );
-
         return (
             <div className="stardb-app">
                 <Header/>
@@ -87,7 +56,22 @@ export default class App extends Component {
                     Toggle random planet
                 </button>
 
-                <Row left={personDetails} right={starshipDetails}/>
+
+                <PersonDetails itemId={5}/>
+                <PlanetDetails itemId={8}/>
+                <StarshipDetails itemId={9}/>
+
+                <PersonList>
+                    {({name}) => <span>{name}</span>}
+                </PersonList>
+
+                <StarshipList>
+                    {({name}) => <span>{name}</span>}
+                </StarshipList>
+
+                <PlanetList>
+                    {({name}) => <span>{name}</span>}
+                </PlanetList>
             </div>
         )
     }
