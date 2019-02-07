@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import ErrorIndicator from "../error-indicator";
+import ErrorIndicator from '../error-indicator/error-indicator';
 
 export default class ErrorBoundry extends Component {
 
@@ -9,8 +9,6 @@ export default class ErrorBoundry extends Component {
     };
 
     componentDidCatch() {
-        debugger;
-
         this.setState({
             hasError: true
         });
