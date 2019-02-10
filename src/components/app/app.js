@@ -3,58 +3,51 @@ import React, {Component} from 'react';
 // Components
 import Header from '../header';
 import RandomPlanet from '../random-planet';
-import {PersonList, StarshipList, PlanetList, PersonDetails, PlanetDetails, StarshipDetails } from "../sw-components";
 import ErrorBoundry from "../error-boundry";
 import SwapiService from "../../services/swapi-service";
+import DummySwapiService from "../swapi-service-context/dummy-swapi-service";
+
+import { PeoplePage, PlanetsPage, StarshipsPage } from '../pages';
 
 import { SwapiServiceProvider } from "../swapi-service-context";
 
 // Styles
 import './app.css'
 
+
 export default class App extends Component {
 
-    swapiService = new SwapiService();
-
     state = {
-        showRandomPlanet: true
+        swapiService: new SwapiService()
     };
 
-    toggleRandomPlanet = () => {
-        this.setState((state) => {
+    onServiceChange = () => {
+        this.setState(({ swapiService}) => {
+            const Service = swapiService instanceof SwapiService ?
+                                DummySwapiService : SwapiService;
+
+            console.log('switched to', Service.name);
+
             return {
-                showRandomPlanet: !state.showRandomPlanet
+                swapiService: new Service()
             }
         })
     };
 
     render() {
 
-        const planet = this.state.showRandomPlanet ? <RandomPlanet/> : null;
-
         return (
             <ErrorBoundry>
-                <SwapiServiceProvider value={this.swapiService}>
+                <SwapiServiceProvider value={this.state.swapiService}>
                     <div className="stardb-app">
-                        <Header/>
-                        { planet }
+                        <Header onServiceChange={this.onServiceChange}/>
 
-                        <button
-                            className="toggle-planet btn btn-warning btn-lg"
-                            onClick={this.toggleRandomPlanet}>
-                            Toggle random planet
-                        </button>
+                        <RandomPlanet />
 
+                        <PeoplePage />
+                        <PlanetsPage />
+                        <StarshipsPage />
 
-                        <PersonDetails itemId={5}/>
-                        <PlanetDetails itemId={8}/>
-                        <StarshipDetails itemId={9}/>
-
-                        <PersonList />
-
-                        <StarshipList />
-
-                        <PlanetList />
                     </div>
                 </SwapiServiceProvider>
             </ErrorBoundry>

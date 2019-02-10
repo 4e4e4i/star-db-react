@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './spinner.scss';
 
@@ -9,6 +9,6 @@ const Spinner = () => {
             </div>
         </div>
     )
-}
+};
 
 export default Spinner;
