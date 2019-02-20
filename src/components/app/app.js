@@ -65,30 +65,30 @@ export default class App extends Component {
                             <RandomPlanet />
 
                             <Switch>
-                                <Route path="/"
+                                <Route path="/star-db-react"
                                        render={() => <h2>Welcome to StardDB</h2>}
                                        exact />
-                                <Route path="/people/:id?" component={PeoplePage} />
-                                <Route path="/planets" component={PlanetsPage} />
+                                <Route path="/star-db-react/people/:id?" component={PeoplePage} />
+                                <Route path="/star-db-react/planets" component={PlanetsPage} />
                                 <Route
-                                    path="/starships"
+                                    path="/star-db-react/starships"
                                     component={StarshipsPage}
                                     exact />
                                 <Route
-                                    path="/starships/:id"
+                                    path="/star-db-react/starships/:id"
                                     render={({match}) => {
                                         const { id } = match.params;
                                         return <StarshipDetails itemId={id}/>
                                     }} />
                                 <Route
-                                    path="/login"
+                                    path="/star-db-react/login"
                                     render={() => (
                                         <LoginPage
                                             isLoggedIn={isLoggedIn}
                                             onLogin={this.onLogin}/>
                                     )}/>
                                 <Route
-                                    path="/secret"
+                                    path="/star-db-react/secret"
                                     render={() => (
                                         <SecretPage isLoggedIn={isLoggedIn}/>
                                     )}/>

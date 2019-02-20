@@ -8,18 +8,18 @@ const Header = ({ onServiceChange }) => {
     return(
         <div className="header">
             <h3 className="header__title">
-                <Link to="/">StarDB</Link>
+                <Link to="/star-db-react">StarDB</Link>
             </h3>
             <nav className="header__navigation">
                 <ul className="d-flex">
                     <li>
-                        <Link to="/people/">People</Link>
+                        <Link to="/star-db-react/people/">People</Link>
                     </li>
                     <li>
-                        <Link to="/planets/">Planets</Link>
+                        <Link to="/star-db-react/planets/">Planets</Link>
                     </li>
                     <li>
-                        <Link to="/starships/">Starships</Link>
+                        <Link to="/star-db-react/starships/">Starships</Link>
                     </li>
                     {/*<li>*/}
                         {/*<Link to="/login">Login</Link>*/}
