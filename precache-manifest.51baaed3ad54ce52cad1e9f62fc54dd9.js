@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "e0904ab033bf16ec02f7",
+    "revision": "4e98be6ffdd03e1c4e76",
     "url": "/star-db-react/static/css/main.b668f623.chunk.css"
   },
   {
-    "revision": "e0904ab033bf16ec02f7",
-    "url": "/star-db-react/static/js/main.e0904ab0.chunk.js"
+    "revision": "4e98be6ffdd03e1c4e76",
+    "url": "/star-db-react/static/js/main.4e98be6f.chunk.js"
   },
   {
     "revision": "9af2b34111ba9da8898d",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/star-db-react/static/js/runtime~main.792989af.js"
   },
   {
-    "revision": "c6d9cee42f49e90ff0b12df6db4e0814",
+    "revision": "48e6fdc5ac1e07ae4f52243244cf5a48",
     "url": "/star-db-react/index.html"
   }
 ];
